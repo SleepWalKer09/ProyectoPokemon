@@ -3,6 +3,9 @@ Proyecto Final
 Instrucciones aqui:
 https://classroom.google.com/c/NDE1MTM0NDc4ODk0/a/NDU3Mzg4NzQyMDI0/details
 """
+from cProfile import label
+from ctypes import resize
+from email.mime import image
 from tkinter import *
 from tkinter import messagebox
 #from turtle import bgcolor, color, title
@@ -12,7 +15,6 @@ import os
 import csv
 from numpy import dtype
 import pandas as pd
-
 
 ##########
 #paso1: Al inicio del juego se mostrará una ventana preguntando si se desea iniciar sesión o si desea registrar un usuario nuevo.
@@ -24,9 +26,29 @@ principal.geometry('520x540')
 canvas1 = Canvas( principal, width=400, height=400)
 canvas1.pack(fill = "both", expand= True)
 
+#Imagenes y fondos de ventana
 bg = PhotoImage(master = canvas1, file = "Imagenes\BGPrincipal.png") 
 im = Image.open("Imagenes\TituloJuego.png")
 ph = ImageTk.PhotoImage(im)
+imgmenu= Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\menu.png')
+tk_imgmenu = ImageTk.PhotoImage(imgmenu)
+
+aquanderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\aquarder.png')
+tk_aquanderimg = ImageTk.PhotoImage(aquanderimg)
+electderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\electder.png')
+tk_electderimg = ImageTk.PhotoImage(electderimg)
+firesorimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\firesor.png')
+tk_firesorimg = ImageTk.PhotoImage(firesorimg)
+mouseimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\mousebug.png')
+tk_mouseimg = ImageTk.PhotoImage(mouseimg)
+mouseimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\mousebug.png')
+tk_mouseimg = ImageTk.PhotoImage(mouseimg)
+splantimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\splant.png')
+tk_splantimg = ImageTk.PhotoImage(splantimg)
+rockdogimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\rockdog.png')
+tk_rockdogimg = ImageTk.PhotoImage(rockdogimg)
+
+
 
 canvas1.create_image( 0, 0, image = bg, anchor = "nw")
 
@@ -200,28 +222,88 @@ def RegistrarUsuario():
 def TipoAventura():
     global menu
     #InicioSesion.withdraw()
-    menu= Toplevel()
-    menu.geometry('520x540')
-    bgmenu = PhotoImage(master = canvas1, file = "Imagenes\Menu.png") 
-    canvas4 = Canvas( principal, width=400, height=400)
-    canvas4.pack(fill = "both", expand= True)
-    canvas4.create_image( 0, 0, image = bgmenu, anchor = "nw")
+    menu = Toplevel()
+    menu.title("Modo de juego")
+    menu.geometry('420x540')
+    menu.resizable(False, False)
+    #bgmenu = PhotoImage(master = canvas4, file = "Imagenes\Menu.png") 
+    canvas4 = Canvas(menu, width=420, height=540)
+    canvas4.create_image( 0, 0, image = tk_imgmenu, anchor = "nw")
+    canvas4.pack(fill = "both", expand= True)   
 
-    l1 = Label(menu, text="Selecciona tu modo de juego",width=25,font=("times",20,"bold"),bg='#F0F9F0',fg='black')
-    l1.place(x=70,y=100)
+    l2 = Label(menu, text="Selecciona tu modo de juego",width=25,font=("times",20,"bold"),bg='#F0F9F0',fg='black')
+    l2.place(x=20,y=30)
 
-    btnTrain= Button(menu, text="Modo Entrenamiento",height= 5, width=26, font=("times",10,"bold"), bg= "#1DD81E", fg="black")#,command=Entrenar)
-    btnTrain.place(x=100, y= 200)
-        
+    btnTrain= Button(menu, text="Modo Entrenamiento",height= 5, width=26, font=("times",10,"bold"), bg= "#1DD81E", fg="black",command=Entrenar)
+    btnTrain.place(x=100, y= 100)
 
     #agregar que si el usuario ya existe, no dejar que se registre
         
     btnHistoria= Button(menu, text="Modo Historia",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black")#, command= Historia)
-    btnHistoria.place(x=200, y= 300)
+    btnHistoria.place(x=100, y= 200)
 
     btnsalir= Button(menu, text="Menu Principal",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Regresar)
-    btnsalir.place(x=300, y= 400)
+    btnsalir.place(x=100, y= 400)
 
+def Entrenar():
+    train = Toplevel()#Nueva Ventana Independiente
+    menu.withdraw()#Esconde la Ventana Anterior
+    train.geometry('1300x950')
+    train.config(bg='#F7DE79')
+    train.title("Elige a tu pokemon")
+    train.resizable(False, False)
+
+    l1 = Label(train, text="Elige a tu pokemon!",width=25,font=("times",20,"bold"),bg='#F0F9F0',fg='black')
+    l1.place(x=350,y=20)
+
+    #IMAGENES 200X200
+    aquanderlab= Label(train, text="Aquander",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    aquanderlab.place(x=50,y=80)
+    pokeaquander= Button(train, image=tk_aquanderimg, width=300, height=300)#command= aquander
+    pokeaquander.place(x=20, y=120)
+    det1= Button(train, text="Detalles", height=2, width=16) #command detalleaquander
+    det1.place(x=110, y= 440)
+
+    labelectder= Label(train, text="Electder",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    labelectder.place(x=400,y=80)
+    pokeelectder= Button(train, image=tk_electderimg, width=300, height=300)#command= aquander
+    pokeelectder.place(x=340, y=120)
+    det2= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    det2.place(x=400, y= 440)
+
+    labfiresor= Label(train, text="Firesor",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    labfiresor.place(x=710,y=80)
+    pokefiresor= Button(train, image=tk_firesorimg, width=300, height=300)#command= aquander
+    pokefiresor.place(x=660, y=120)
+    detfiresor= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detfiresor.place(x=710, y= 440)
+
+    labmouse= Label(train, text="Mousebug",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    labmouse.place(x=1050,y=80)
+    pokemouse= Button(train, image=tk_mouseimg, width=300, height=300)#command= aquander
+    pokemouse.place(x=980, y=120)
+    detmouse= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detmouse.place(x=1050, y= 440)
+
+    labsplant= Label(train, text="Splant",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    labsplant.place(x=50,y=520)
+    pokesplant= Button(train, image=tk_splantimg, width=300, height=300)#command= aquander
+    pokesplant.place(x=20, y=550)
+    detsplant= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detsplant.place(x=110, y= 870)  
+
+    labrockdog= Label(train, text="Rockdog",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+    labrockdog.place(x=1050,y=520)
+    pokerockdog= Button(train, image=tk_rockdogimg, width=300, height=300)#command= aquander
+    pokerockdog.place(x=980, y=550)
+    detrockdog= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detrockdog.place(x=1050, y= 870)  
+
+    btnTrain= Button(train, text="Iniciar combate",height= 5, width=26, font=("times",15,"bold"), bg= "#1DD81E", fg="black")
+    btnTrain.place(x=500, y= 600)
+
+    btnsalir= Button(train, text="Menu Aventura",height= 3, width=16, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Regresar)
+    btnsalir.place(x=500, y= 800)
 
 
 
@@ -230,7 +312,12 @@ def Regresar():
     # IniciarSesion(InicioSesion.withdraw())
     # RegistrarUsuario(RegistroUsuario.withdraw())
     principal.deiconify()
-    
+
+def Regresar():
+    # IniciarSesion(InicioSesion.withdraw())
+    # RegistrarUsuario(RegistroUsuario.withdraw())
+    menu.deiconify()
+   
 
 btnInicio= Button(principal, text="Iniciar Sesion",height= 5, width=15, font=("times",10,"bold"), bg= "#C9F951", fg="black", command= IniciarSesion)
 btnRegistro= Button(principal, text="Registrar Usuario",height= 5, width=15, font=("times",10,"bold"),  bg= "#F2F71C", fg="black", command= RegistrarUsuario)
