@@ -37,7 +37,6 @@ tk_imgmenu = ImageTk.PhotoImage(imgmenu)
 imgpokedex= Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\pokedex.png')
 tk_imgpokedex = ImageTk.PhotoImage(imgpokedex)
 
-
 aquanderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\aquarder.png')
 tk_aquanderimg = ImageTk.PhotoImage(aquanderimg)
 aquanderdet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detaquarder.png')
@@ -45,16 +44,28 @@ tk_aquanderdet = ImageTk.PhotoImage(aquanderdet)
 
 electderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\electder.png')
 tk_electderimg = ImageTk.PhotoImage(electderimg)
+electerdet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detelecter.png')
+tk_electerdet = ImageTk.PhotoImage(electerdet)
+
 firesorimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\firesor.png')
 tk_firesorimg = ImageTk.PhotoImage(firesorimg)
+firesordet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detfiresor.png')
+tk_firesordet = ImageTk.PhotoImage(firesordet)
+
 mouseimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\mousebug.png')
 tk_mouseimg = ImageTk.PhotoImage(mouseimg)
-mouseimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\mousebug.png')
-tk_mouseimg = ImageTk.PhotoImage(mouseimg)
+mousedet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detmousebug.png')
+tk_mousedet = ImageTk.PhotoImage(mousedet)
+
 splantimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\splant.png')
 tk_splantimg = ImageTk.PhotoImage(splantimg)
+splantdet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detsplant.png')
+tk_splantdet = ImageTk.PhotoImage(splantdet)
+
 rockdogimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\rockdog.png')
 tk_rockdogimg = ImageTk.PhotoImage(rockdogimg)
+rockdogdet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detrockdog.png')
+tk_rockdogdet = ImageTk.PhotoImage(rockdogdet)
 
 
 
@@ -264,10 +275,10 @@ def Entrenar():
     l1 = Label(train, text="Elige a tu pokemon!",width=25,font=("times",20,"bold"),bg='#F0F9F0',fg='black')
     l1.place(x=350,y=20)
 
-    #botones de detalles de pokemones
+    #botones de detalles de pokemones 
     def detaquander():
         detalleaquander = Toplevel()
-        detalleaquander.geometry('1000x450')
+        detalleaquander.geometry('1000x480')
         detalleaquander.resizable(False, False)
         canvas5 = Canvas(detalleaquander, width=1000, height=500)
         canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
@@ -291,6 +302,128 @@ def Entrenar():
         habimg= Label(detalleaquander, image=tk_aquanderdet, width=983, height=206)
         habimg.place(x=10,y=230)
 
+    def detelecter():
+        detalleelecter = Toplevel()
+        detalleelecter.geometry('1000x480')
+        detalleelecter.resizable(False, False)
+        canvas5 = Canvas(detalleelecter, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detalleelecter.title('Detalles Aquander')
+
+        pokedeximg= Label(detalleelecter, image=tk_electderimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detalleelecter, text= "Electer: Tipo Eléctrico",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detalleelecter, text= "Ventaja con: Agua, Escarabajo",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detalleelecter, text= "Desventaja con: Roca, Planta",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detalleelecter, text= "Normal con: Electrico, Fuego",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detalleelecter, image=tk_electerdet, width=983, height=206)
+        habimg.place(x=10,y=230)
+    
+    def detfiresor():
+        detallefiresor = Toplevel()
+        detallefiresor.geometry('1000x480')
+        detallefiresor.resizable(False, False)
+        canvas5 = Canvas(detallefiresor, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detallefiresor.title('Detalles Firesor')
+
+        pokedeximg= Label(detallefiresor, image=tk_firesorimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detallefiresor, text= "Firesor: Tipo Fuego",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detallefiresor, text= "Ventaja con: Planta, Escarabajo",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detallefiresor, text= "Desventaja con: Agua, Roca",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detallefiresor, text= "Normal con: Electrico, Fuego",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detallefiresor, image=tk_firesordet, width=983, height=206)
+        habimg.place(x=10,y=230)
+
+    def detmousebug():
+        detallemouse = Toplevel()
+        detallemouse.geometry('1000x480')
+        detallemouse.resizable(False, False)
+        canvas5 = Canvas(detallemouse, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detallemouse.title('Detalles Mousebug')
+
+        pokedeximg= Label(detallemouse, image=tk_mouseimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detallemouse, text= "Mousebug: Tipo Escarabajo",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detallemouse, text= "Ventaja con: Planta, Roca",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detallemouse, text= "Desventaja con: Fuego, Electrico",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detallemouse, text= "Normal con: Escarabajo, Agua",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detallemouse, image=tk_mousedet, width=983, height=206)
+        habimg.place(x=10,y=230)
+
+
+    def detsplant():
+        detallesplant= Toplevel()
+        detallesplant.geometry('1000x480')
+        detallesplant.resizable(False, False)
+        canvas5 = Canvas(detallesplant, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detallesplant.title('Detalles Splant')
+
+        pokedeximg= Label(detallesplant, image=tk_splantimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detallesplant, text= "Splant: Tipo Planta",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detallesplant, text= "Ventaja con: Agua, Roca, Eléctrico",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detallesplant, text= "Desventaja con: Fuego, Escarabajo",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detallesplant, text= "Normal con: Planta",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detallesplant, image=tk_splantdet, width=983, height=206)
+        habimg.place(x=10,y=230)
+
+
+    def detrockdog():
+        detallerockdog= Toplevel()
+        detallerockdog.geometry('1000x480')
+        detallerockdog.resizable(False, False)
+        canvas5 = Canvas(detallerockdog, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detallerockdog.title('Detalles Rockdog')
+
+        pokedeximg= Label(detallerockdog, image=tk_splantimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detallerockdog, text= "Rockdog: Tipo Roca",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detallerockdog, text= "Ventaja con: Fuego, Eléctrico",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detallerockdog, text= "Desventaja con: Agua, Planta",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detallerockdog, text= "Normal con: Escarabajo, Roca",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detallerockdog, image=tk_splantdet, width=983, height=206)
+        habimg.place(x=10,y=230)
+        
         #tabla['columns']= ('Habilidad', 'Ataque Normal','Ataque con Ventaja','Ataque sin ventaja','Ataque con potenciador normal','Ataque con potenciador con ventaja','Ataque con potenciador sin ventaja')
         # tabla.column("#0", width=80)
         # tabla.column("col1",anchor=CENTER, width=80)
@@ -330,35 +463,35 @@ def Entrenar():
     labelectder.place(x=400,y=80)
     pokeelectder= Button(train, image=tk_electderimg, width=300, height=300)#command= aquander
     pokeelectder.place(x=340, y=120)
-    det2= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    det2= Button(train, text="Detalles", width=16, height=2, command=detelecter) 
     det2.place(x=400, y= 440)
 
     labfiresor= Label(train, text="Firesor",width=25,font=("times",12),bg='#F0F9F0',fg='black')
     labfiresor.place(x=710,y=80)
     pokefiresor= Button(train, image=tk_firesorimg, width=300, height=300)#command= aquander
     pokefiresor.place(x=660, y=120)
-    detfiresor= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detfiresor= Button(train, text="Detalles", width=16, height=2, command= detfiresor)
     detfiresor.place(x=710, y= 440)
 
     labmouse= Label(train, text="Mousebug",width=25,font=("times",12),bg='#F0F9F0',fg='black')
     labmouse.place(x=1050,y=80)
     pokemouse= Button(train, image=tk_mouseimg, width=300, height=300)#command= aquander
     pokemouse.place(x=980, y=120)
-    detmouse= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detmouse= Button(train, text="Detalles", width=16, height=2, command=detmousebug)
     detmouse.place(x=1050, y= 440)
 
     labsplant= Label(train, text="Splant",width=25,font=("times",12),bg='#F0F9F0',fg='black')
     labsplant.place(x=50,y=520)
     pokesplant= Button(train, image=tk_splantimg, width=300, height=300)#command= aquander
     pokesplant.place(x=20, y=550)
-    detsplant= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detsplant= Button(train, text="Detalles", width=16, height=2, command=detsplant)
     detsplant.place(x=110, y= 870)  
 
     labrockdog= Label(train, text="Rockdog",width=25,font=("times",12),bg='#F0F9F0',fg='black')
     labrockdog.place(x=1050,y=520)
     pokerockdog= Button(train, image=tk_rockdogimg, width=300, height=300)#command= aquander
     pokerockdog.place(x=980, y=550)
-    detrockdog= Button(train, text="Detalles", width=16, height=2) #command detalleaquander
+    detrockdog= Button(train, text="Detalles", width=16, height=2, command=detrockdog)
     detrockdog.place(x=1050, y= 870)  
 
     btnTrain= Button(train, text="Iniciar combate",height= 5, width=26, font=("times",15,"bold"), bg= "#1DD81E", fg="black")
