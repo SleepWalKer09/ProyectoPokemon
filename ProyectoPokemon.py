@@ -4,10 +4,12 @@ Instrucciones aqui:
 https://classroom.google.com/c/NDE1MTM0NDc4ODk0/a/NDU3Mzg4NzQyMDI0/details
 """
 from cProfile import label
+from cgitb import text
 from ctypes import resize
 from email.mime import image
 from tkinter import *
 from tkinter import messagebox
+from tkinter.ttk import Treeview
 #from turtle import bgcolor, color, title
 #from webbrowser import get
 from PIL import Image, ImageTk
@@ -32,9 +34,15 @@ im = Image.open("Imagenes\TituloJuego.png")
 ph = ImageTk.PhotoImage(im)
 imgmenu= Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\menu.png')
 tk_imgmenu = ImageTk.PhotoImage(imgmenu)
+imgpokedex= Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\pokedex.png')
+tk_imgpokedex = ImageTk.PhotoImage(imgpokedex)
+
 
 aquanderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\aquarder.png')
 tk_aquanderimg = ImageTk.PhotoImage(aquanderimg)
+aquanderdet = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\detaquarder.png')
+tk_aquanderdet = ImageTk.PhotoImage(aquanderdet)
+
 electderimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\electder.png')
 tk_electderimg = ImageTk.PhotoImage(electderimg)
 firesorimg = Image.open('C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\firesor.png')
@@ -256,12 +264,66 @@ def Entrenar():
     l1 = Label(train, text="Elige a tu pokemon!",width=25,font=("times",20,"bold"),bg='#F0F9F0',fg='black')
     l1.place(x=350,y=20)
 
+    #botones de detalles de pokemones
+    def detaquander():
+        detalleaquander = Toplevel()
+        detalleaquander.geometry('1000x450')
+        detalleaquander.resizable(False, False)
+        canvas5 = Canvas(detalleaquander, width=1000, height=500)
+        canvas5.create_image( 0, 0, image = tk_imgpokedex, anchor = "nw")
+        canvas5.pack(fill = "both", expand= True)   
+
+        detalleaquander.title('Detalles Aquander')
+        # tabla = Treeview(detalleaquander, columns=("col1","col2","col3","col4","col5","col6"))
+        # tabla1 = Treeview(detalleaquander, columns=("col1","col2"))
+
+        pokedeximg= Label(detalleaquander, image=tk_aquanderimg, width=200, height=200)
+        pokedeximg.place(x=620, y=10)
+        labelname = Label(detalleaquander, text= "Aquander: Tipo Agua",font=("times",20,"bold"))
+        labelname.place(x=250, y=30)
+        labelname1 = Label(detalleaquander, text= "Ventaja con: Roca, Fuego",font=("times",15,"bold"))
+        labelname1.place(x=20, y=120)
+        labelname2 = Label(detalleaquander, text= "Desventaja con: Electrico, Planta",font=("times",15,"bold"))
+        labelname2.place(x=20, y=150)
+        labelname3 = Label(detalleaquander, text= "Normal con: Agua, Escarabajo",font=("times",15,"bold"))
+        labelname3.place(x=20, y=180)
+
+        habimg= Label(detalleaquander, image=tk_aquanderdet, width=983, height=206)
+        habimg.place(x=10,y=230)
+
+        #tabla['columns']= ('Habilidad', 'Ataque Normal','Ataque con Ventaja','Ataque sin ventaja','Ataque con potenciador normal','Ataque con potenciador con ventaja','Ataque con potenciador sin ventaja')
+        # tabla.column("#0", width=80)
+        # tabla.column("col1",anchor=CENTER, width=80)
+        # tabla.column("col2",anchor=CENTER, width=120)
+        # tabla.column("col3",anchor=CENTER, width=120)
+        # tabla.column("col4",anchor=CENTER, width=200)
+        # tabla.column("col5",anchor=CENTER, width=200)
+        # tabla.column("col6",anchor=CENTER, width=200)
+        # tabla.heading("#0",text="Habilidad", anchor=LEFT, )
+        # tabla.heading("col1",text="Ataque Normal",anchor=CENTER)
+        # tabla.heading("col2",text="Ataque con Ventaja",anchor=CENTER)
+        # tabla.heading("col3",text="Ataque sin Ventaja",anchor=CENTER)
+        # tabla.heading("col4",text="Ataque con potenciador normal",anchor=CENTER)
+        # tabla.heading("col5",text="Ataque con potenciador con ventaja",anchor=CENTER)
+        # tabla.heading("col6",text="Ataque con potenciador sin ventaja",anchor=CENTER)
+        # tabla.insert("",END, text="Aqua-jet", values=("3 puntos","5 puntos","2 puntos","5 puntos","7 puntos","4 puntos"))
+        # tabla.insert("",END, text="Cola Férrea", values=("2 puntos","","","","",""))
+        # tabla.insert("",END, text="Cabezazo", values=("2 puntos","","","","",""))
+        # tabla.insert("",END, text="Lluvia", values=("Potenciador de ataques que puede utilizar una vez cada TRES turnos y dura DOS turnos"))
+        # tabla.place(x=10,y=230)
+        # tabla1.column("#0", width=80)
+        # tabla1.column("col1",anchor=CENTER, width=80)
+        # tabla1.heading("#0",text="Habilidad Especial", anchor=CENTER, )
+        # tabla1.heading("col1",text="Efecto",anchor=CENTER)
+        # tabla1.insert("",END, text="Lluvia", values=("Potenciador de Campo, Se puede utilizar una vez cada TRES turnos y dura DOS turnos"))
+        # tabla1.place(x=10,y=300)
+
     #IMAGENES 200X200
     aquanderlab= Label(train, text="Aquander",width=25,font=("times",12),bg='#F0F9F0',fg='black')
     aquanderlab.place(x=50,y=80)
     pokeaquander= Button(train, image=tk_aquanderimg, width=300, height=300)#command= aquander
     pokeaquander.place(x=20, y=120)
-    det1= Button(train, text="Detalles", height=2, width=16) #command detalleaquander
+    det1= Button(train, text="Detalles", height=2, width=16, command= detaquander)
     det1.place(x=110, y= 440)
 
     labelectder= Label(train, text="Electder",width=25,font=("times",12),bg='#F0F9F0',fg='black')
@@ -302,7 +364,7 @@ def Entrenar():
     btnTrain= Button(train, text="Iniciar combate",height= 5, width=26, font=("times",15,"bold"), bg= "#1DD81E", fg="black")
     btnTrain.place(x=500, y= 600)
 
-    btnsalir= Button(train, text="Menu Aventura",height= 3, width=16, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Regresar)
+    btnsalir= Button(train, text="Menu Aventura",height= 3, width=16, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= RegresaMenu)
     btnsalir.place(x=500, y= 800)
 
 
@@ -313,7 +375,7 @@ def Regresar():
     # RegistrarUsuario(RegistroUsuario.withdraw())
     principal.deiconify()
 
-def Regresar():
+def RegresaMenu():
     # IniciarSesion(InicioSesion.withdraw())
     # RegistrarUsuario(RegistroUsuario.withdraw())
     menu.deiconify()
