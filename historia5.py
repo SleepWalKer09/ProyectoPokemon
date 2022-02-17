@@ -10,11 +10,11 @@ import pandas as pd
 a= "C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\"
 Personaje = 0
 Nombre=""
-Nombre2="Mousebug"
-juego=4
+Nombre2="Splant"
+juego=5
 t=0
 tipo1=""
-tipo2="Escarabajo"
+tipo2="Planta"
 pot_1=0
 pot_2=0
 contador_pot1=0

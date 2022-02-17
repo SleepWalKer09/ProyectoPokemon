@@ -6,15 +6,14 @@ import os
 import random
 import pandas as pd
 
-
 a= "C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\"
 Personaje = 0
 Nombre=""
-Nombre2="Aquarder"
-juego=3
+Nombre2="Electder"
+juego=2
 t=0
 tipo1=""
-tipo2="agua"
+tipo2="Electrico"
 pot_1=0
 pot_2=0
 contador_pot1=0
@@ -143,7 +142,7 @@ def oponente(nombre2,t1):
     Atq3.config(state=DISABLED)
     Atq4.config(state=DISABLED)
 
-#NIVEL 3: CPU PELEA CON FIRESOR
+#NIVEL 2: CPU PELEA CON ELECTER
         #no esta activo el potenciador
     if(pot_2==0) and ((contador_pot2 >4) or (contador_pot2==0)):
         CPUatq=random.randint(1,4)#ataques aleatorios
@@ -153,13 +152,13 @@ def oponente(nombre2,t1):
     if(CPUatq==4):
         pot_2= 1
         contador_pot2= 1
-        LogBatalla.config(text=str(nombre2)+''' a utilizado Dia Soleado\n
+        LogBatalla.config(text=str(nombre2)+''' a utilizado Campo Magnetico\n
         Sus ataques se intensifican por 2 turnos''', anchor="Center")
         time.sleep(2)
-        #ataque 1 firesor
+    #ataque 1 electder
     elif(CPUatq==1):
-        if(t1=="Planta" or t1=="Escarabajo"):
-            LogBatalla.config(text= str(Nombre2)+''' a utilizado Llamarada\n
+        if(t1=="Agua" or t1=="Escarabajo"):
+            LogBatalla.config(text= str(Nombre2)+''' a utilizado Trueno\n
             ¡Es super efectivo!''', anchor="center")
             if(pot_2==0):
                 LogBatalla.config(text='''Recibiste 5 HP de daño!!''', anchor="center")
@@ -169,8 +168,8 @@ def oponente(nombre2,t1):
                 LogBatalla.config(text='''Recibiste 7 HP de daño!!''', anchor="center")
                 Vidajugador= Vidajugador-7
                 time.sleep(2)
-        if(t1=="Roca" or t1=="Agua"):
-            LogBatalla.config(text=str(Nombre2)+''' a utilizado Llamarada\n
+        if(t1=="Roca" or t1=="Planta"):
+            LogBatalla.config(text=str(Nombre2)+''' a utilizado Trueno\n
             ¡No es muy efectivo!''', anchor="center")
             if(pot_2==0):
                 LogBatalla.config(text='''Recibiste 2 HP de daño!!''', anchor="center")
@@ -181,7 +180,7 @@ def oponente(nombre2,t1):
                 Vidajugador= Vidajugador-4
                 time.sleep(2)
         if(t1=="Electrico" or t1=="Fuego"):
-            LogBatalla.config(text=str(Nombre2)+''' a utilizado Llamarada\n
+            LogBatalla.config(text=str(Nombre2)+''' a utilizado Trueno\n
             ¡Daño normal!''', anchor="center")
             if(pot_2==0):
                 LogBatalla.config(text='''Recibiste 3 HP de daño!!''', anchor="center")
@@ -191,39 +190,40 @@ def oponente(nombre2,t1):
                 LogBatalla.config(text='''Recibiste 5 HP de daño!!''', anchor="center")
                 Vidajugador= Vidajugador-5
                 time.sleep(2)
-        train.update()
+        hist3.update()
         time.sleep(2)
-    #Ataques aquarder
+        #Ataques aquarder
+    
     elif(CPUatq==2):
-        LogBatalla.config(text=str(Nombre2)+''' a utilizado Embestida''', anchor="center")
+        LogBatalla.config(text=str(Nombre2)+''' a utilizado Arañazo''', anchor="center")
         time.sleep(2)
-        Vidajugador = Vidajugador-2
-        LogBatalla.config(text='''Recibiste 2 HP de daño!!''', anchor="center")
-        train.update()
+        Vidajugador = Vidajugador-3
+        LogBatalla.config(text='''Recibiste 3 HP de daño!!''', anchor="center")
+        hist3.update()
 
     elif(CPUatq==3):
         LogBatalla.config(text=str(Nombre2)+''' a utilizado Mordisco''', anchor="center")
         time.sleep(2)
-        Vidajugador = Vidajugador-2
-        LogBatalla.config(text='''Recibiste 2 HP de daño!!''', anchor="center")
-        train.update()
+        Vidajugador = Vidajugador-3
+        LogBatalla.config(text='''Recibiste 3 HP de daño!!''', anchor="center")
+        hist3.update()
 
-    if(contador_pot2 != 0):
-        contador_pot2 = contador_pot2 + 1
-    
+        if(contador_pot2 != 0):
+            contador_pot2 = contador_pot2 + 1
+        
         #contador de turnos para el ataque especial
-    if(contador_pot2 == 4):
-        pot_2 = 0
-        LogBatalla.conf(text=''' Ha terminado el efecto Dia Soleado \n
-        Los ataques de '''+ str(Nombre2) +'''vuelven a la normalidad''', anchor="center")
-    elif(contador_pot2 > 4):
-        contador_pot2= 0
-    else:
-        LogBatalla.config(text=str(Nombre2)+ ''' a utilizado Dia Soleado \n
-        Quedan '''+str(4-contador_pot2)+" Movimientos ",anchor="center")
-        VidaJ.config(text=str(Vidajugador)+" HP")
-        train.update()
-        time.sleep(2)
+        if(contador_pot2 == 4):
+            pot_2 = 0
+            LogBatalla.conf(text=''' Ha terminado el efecto Campo Magnetico \n
+            Los ataques de '''+ str(Nombre2) +'''vuelven a la normalidad''', anchor="center")
+        elif(contador_pot2 > 4):
+            contador_pot2= 0
+        else:
+            LogBatalla.config(text=str(Nombre2)+ ''' a utilizado Campo Magnetico \n
+            Quedan '''+str(4-contador_pot2)+" Movimientos ",anchor="center")
+            VidaJ.config(text=str(Vidajugador)+" HP")
+            hist3.update()
+            time.sleep(2)
             
     Atq1.config(state=NORMAL)
     Atq2.config(state=NORMAL)
@@ -617,7 +617,7 @@ def SegundoAtaque():
         Vidacpu = Vidacpu-2
         LogBatalla.config(text='''Tu rival ha recibido 2 HP de daño!!''', anchor="center")
         hist3.update()
-
+ 
 
 def TercerAtaque():
     global pot_1
@@ -712,9 +712,9 @@ Pokemonjugador= Label()
 Pokemonjugador.place(x=180,y=80)
 nombrejugador = Label(text=Nombre)
 nombrejugador.place(x=220,y=30)
-CpuImagen= Label(image=tk_aquander)
+CpuImagen= Label(image=tk_electder)
 CpuImagen.place(x=500,y=80)
-nombrerival = Label(text="Aquarder")
+nombrerival = Label(text="Electer")
 nombrerival.place(x=580,y=30)
 VidaJ = Label(text=str(Vidajugador) + " HP")
 VidaJ.place(x=220, y=300)

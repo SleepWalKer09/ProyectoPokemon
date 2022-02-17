@@ -155,7 +155,7 @@ def oponente(nombre2,t1):
         LogBatalla.config(text=str(nombre2)+''' a utilizado Esporas\n
         Sus ataques se intensifican por 2 turnos''', anchor="Center")
         time.sleep(2)
-    #ataque 1 firesor
+    #ataque 1 mousebug
     elif(CPUatq==1):
         if(t1=="Planta" or t1=="Roca"):
             LogBatalla.config(text= str(Nombre2)+''' a utilizado Picotazo\n
