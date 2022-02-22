@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import messagebox
 import os
+import pandas as pd
+
 
 Personaje=0
 nombre=""
@@ -9,11 +11,11 @@ nombre2=""
 rival=0
 t1=""
 t2=""
-train = Tk()
-train.geometry('1300x950')
-train.config(bg='#F7DE79')
-train.title("Elige a tu pokemon")
-train.resizable(False, False)
+trainhist = Tk()
+trainhist.geometry('1300x950')
+trainhist.config(bg='#F7DE79')
+trainhist.title("Elige a tu pokemon")
+trainhist.resizable(False, False)
 a= "C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\"
 #imagenes de pokemon
 aquanderimg = Image.open(a+'aquarder.png')
@@ -221,7 +223,7 @@ def a1():
     #     t2="Agua"
     #     bandera=2
     #     rival=1
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -249,7 +251,7 @@ def a2():
         bandera=1
         Personaje=2
         pokeelectder.config(bg="red")
-        messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        messagebox.showinfo(message="Elegiste a Electer", title="Confirmacion")
     # else:
     #     if (Personaje==2):
     #         pokeelectder.config(bg="pink")
@@ -259,7 +261,7 @@ def a2():
     #     t2="Electrico"
     #     bandera=2
     #     rival=2
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -287,7 +289,7 @@ def a3():
         bandera=1
         Personaje=3
         pokefiresor.config(bg="red")
-        messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        messagebox.showinfo(message="Elegiste a Firesor", title="Confirmacion")
     # else:
     #     if (Personaje==3):
     #         pokefiresor.config(bg="pink")
@@ -297,7 +299,7 @@ def a3():
     #     t2="Electrico"
     #     bandera=2
     #     rival=3
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -325,7 +327,7 @@ def a4():
         bandera=1
         Personaje=4
         pokemouse.config(bg="red")
-        messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        messagebox.showinfo(message="Elegiste a Mousebug", title="Confirmacion")
     # else:
     #     if (Personaje==4):
     #         pokemouse.config(bg="pink")
@@ -335,7 +337,7 @@ def a4():
     #     t2="Escarabajo"
     #     bandera=2
     #     rival=4
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -362,7 +364,7 @@ def a5():
         bandera=1
         Personaje=5
         pokesplant.config(bg="red")
-        messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        messagebox.showinfo(message="Elegiste a Splant", title="Confirmacion")
     # else:
     #     if (Personaje==5):
     #         pokesplant.config(bg="pink")
@@ -372,7 +374,7 @@ def a5():
     #     t2="Planta"
     #     bandera=2
     #     rival=5
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -400,7 +402,7 @@ def a6():
         bandera=1
         Personaje=6
         pokerockdog.config(bg="red")
-        messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        messagebox.showinfo(message="Elegiste a Rockdog", title="Confirmacion")
     # else:
     #     if (Personaje==6):
     #         pokerockdog.config(bg="pink")
@@ -410,7 +412,7 @@ def a6():
     #     t2="Roca"
     #     bandera=2
     #     rival=3
-        btnTrain.config(state=NORMAL)
+        btntrainhist.config(state=NORMAL)
         pokeaquander.config(state=DISABLED)
         pokeelectder.config(state=DISABLED)
         pokefiresor.config(state=DISABLED)
@@ -427,7 +429,7 @@ def a6():
         # print("TipoRival "+t2)
 
 
-
+#Aqui debe leer el nivel que esta dentro del archivo CSV
 def iniciar():
     global nombre
     # global nombre2
@@ -440,72 +442,97 @@ def iniciar():
     if(res == True):
         if(Personaje!=0) or (rival!=0):
             print("Ok")
-            train.destroy()
-            import historia2
-            historia2.batalla(Personaje,nombre,t1)
+            trainhist.destroy()
+            import historia1
+            historia1.batalla(Personaje,nombre,t1)
+
         else:
             messagebox.showerror(message="Selecciona ambos personajes", title="Error")
-    # else:
-    #     messagebox.showinfo(message="Selecciona tu personaje", title="Personaje")
-    #     bandera = 0
-    #     Personaje = 0
-    #     rival = 0
-    #     btnTrain.config(state=DISABLED)
-    #     pokeaquander.config(state=DISABLED, bg="gray")
-    #     pokeelectder.config(state=DISABLED, bg="gray")
-    #     pokefiresor.config(state=DISABLED, bg="gray")
-    #     pokemouse.config(state=DISABLED, bg="gray")
-    #     pokesplant.config(state=DISABLED, bg="gray")
-    #     pokerockdog.config(state=DISABLED, bg="gray")
+
+
+    global bd
+    global usuario
+    global level
+   
+    print(bd)
+    print("user: "+ usuario)
+    print("nivel: "+ level)
+    for fichero in bd:
+            print(fichero)
+            if fichero.startswith(usuario):# and fichero.endswith(".csv"):
+                df = pd.read_csv(fichero, sep=',')
+                df = pd.DataFrame(df, columns=['Name', 'Password', 'Level'])
+                level = str(df.iloc[0]['Level']) #esto permite imprimir una fila concreta o un valor de esa fila
+                print("nivel: "+ level)
+                if(level == 1):
+                    import historia1
+                    historia1.batalla(Personaje,nombre,t1)
+                elif(level == 2):
+                    import historia2
+                    historia2.batalla(Personaje,nombre,t1)
+                elif(level == 3):
+                    import historia3
+                    historia3.batalla(Personaje,nombre,t1)
+                elif(level == 4):
+                    import historia4
+                    historia4.batalla(Personaje,nombre,t1)
+                elif(level == 5):
+                    import historia5
+                    historia5.batalla(Personaje,nombre,t1)
+                elif(level == 6):
+                    import historia6
+                    historia6.batalla(Personaje,nombre,t1)
+                else:
+                    print("No se reconocio el nivel, revisar archivo CSV")
 
 
 
 #primer ventana emergente
 messagebox.showinfo(message="Selecciona tu personaje",title="Personaje")
 bandera= 0
-l1 = Label(train, text="Elige a tu pokemon!",width=25,font=("times",20,"bold italic"),bg='#F0F9F0',fg='black')
+l1 = Label(trainhist, text="Elige a tu pokemon!",width=25,font=("times",20,"bold italic"),bg='#F0F9F0',fg='black')
 l1.place(x=350,y=20)
 
-aquanderlab= Label(train, text="Aquander",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+aquanderlab= Label(trainhist, text="Aquander",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 aquanderlab.place(x=50,y=80)
-pokeaquander= Button(train, image=tk_aquanderimg, width=300, height=300, command= a1)
+pokeaquander= Button(trainhist, image=tk_aquanderimg, width=300, height=300, command= a1)
 pokeaquander.place(x=20, y=120)
-det1= Button(train, text="Detalles", height=2, width=16, command= detaquander)
+det1= Button(trainhist, text="Detalles", height=2, width=16, command= detaquander)
 det1.place(x=110, y= 440)
 
-labelectder= Label(train, text="Electder",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+labelectder= Label(trainhist, text="Electder",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 labelectder.place(x=400,y=80)
-pokeelectder= Button(train, image=tk_electderimg, width=300, height=300,command= a2)
+pokeelectder= Button(trainhist, image=tk_electderimg, width=300, height=300,command= a2)
 pokeelectder.place(x=340, y=120)
-det2= Button(train, text="Detalles", width=16, height=2, command=detelecter) 
+det2= Button(trainhist, text="Detalles", width=16, height=2, command=detelecter) 
 det2.place(x=400, y= 440)
 
-labfiresor= Label(train, text="Firesor",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+labfiresor= Label(trainhist, text="Firesor",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 labfiresor.place(x=710,y=80)
-pokefiresor= Button(train, image=tk_firesorimg, width=300, height=300, command= a3)
+pokefiresor= Button(trainhist, image=tk_firesorimg, width=300, height=300, command= a3)
 pokefiresor.place(x=660, y=120)
-defiresor = Button(train, text="Detalles", width=16, height=2, command= detfiresor)
+defiresor = Button(trainhist, text="Detalles", width=16, height=2, command= detfiresor)
 defiresor.place(x=710, y= 440)
 
-labmouse= Label(train, text="Mousebug",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+labmouse= Label(trainhist, text="Mousebug",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 labmouse.place(x=1050,y=80)
-pokemouse= Button(train, image=tk_mouseimg, width=300, height=300, command= a4)
+pokemouse= Button(trainhist, image=tk_mouseimg, width=300, height=300, command= a4)
 pokemouse.place(x=980, y=120)
-detmouse= Button(train, text="Detalles", width=16, height=2, command=detmousebug)
+detmouse= Button(trainhist, text="Detalles", width=16, height=2, command=detmousebug)
 detmouse.place(x=1050, y= 440)
 
-labsplant= Label(train, text="Splant",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+labsplant= Label(trainhist, text="Splant",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 labsplant.place(x=50,y=520)
-pokesplant= Button(train, image=tk_splantimg, width=300, height=300, command= a5)
+pokesplant= Button(trainhist, image=tk_splantimg, width=300, height=300, command= a5)
 pokesplant.place(x=20, y=550)
-desplant= Button(train, text="Detalles", width=16, height=2, command=detsplant)
+desplant= Button(trainhist, text="Detalles", width=16, height=2, command=detsplant)
 desplant.place(x=110, y= 870)  
 
-labrockdog= Label(train, text="Rockdog",width=25,font=("times",12),bg='#F0F9F0',fg='black')
+labrockdog= Label(trainhist, text="Rockdog",width=25,font=("times",12),bg='#F0F9F0',fg='black')
 labrockdog.place(x=1050,y=520)
-pokerockdog= Button(train, image=tk_rockdogimg, width=300, height=300, command= a6)
+pokerockdog= Button(trainhist, image=tk_rockdogimg, width=300, height=300, command= a6)
 pokerockdog.place(x=980, y=550)
-derockdog= Button(train, text="Detalles", width=16, height=2, command=detrockdog)
+derockdog= Button(trainhist, text="Detalles", width=16, height=2, command=detrockdog)
 derockdog.place(x=1050, y= 870)  
 
 pokeaquander.config(state=NORMAL, bg="gray")
@@ -515,7 +542,7 @@ pokemouse.config(state=NORMAL, bg="gray")
 pokesplant.config(state=NORMAL, bg="gray")
 pokerockdog.config(state=NORMAL, bg="gray")
 
-btnTrain= Button(train, text="Iniciar combate",height= 5, width=26, font=("times",15,"bold"), bg= "#1DD81E", fg="black",state=DISABLED, command= iniciar)
-btnTrain.place(x=500, y= 600)
+btntrainhist= Button(trainhist, text="Iniciar combate",height= 5, width=26, font=("times",15,"bold"), bg= "#1DD81E", fg="black",state=DISABLED, command= iniciar)
+btntrainhist.place(x=500, y= 600)
 
-train.mainloop()
+trainhist.mainloop()

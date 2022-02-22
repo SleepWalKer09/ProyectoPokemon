@@ -3,6 +3,7 @@ Proyecto Final
 Instrucciones aqui:
 https://classroom.google.com/c/NDE1MTM0NDc4ODk0/a/NDU3Mzg4NzQyMDI0/details
 """
+from logging import _Level
 from random import random
 from tkinter import *
 from tkinter import messagebox
@@ -112,6 +113,8 @@ def IniciarSesion():
     e2.place(x=70,y=270)
 
     def Ingresar():
+        global usuario
+        global Level
         usuario = e1.get()
         contra =e2.get()
         
@@ -208,13 +211,17 @@ def RegistrarUsuario():
         e3.place(x=70,y=370)
         
         def registro():
+            global usuario
+            global passw
+            global level
             usuario = e1.get()
             passw = e2.get()
             passw1 = e3.get()
+            level = 1
             if(passw == passw1):
             #generar csv con distinto nombre para cada usuario
-                header=['Name','Password']
-                datos=[usuario,passw]
+                header=['Name','Password','Level']
+                datos=[usuario,passw,level]
                 archivo = open("BDUsuarios\\"+usuario+".csv","w",newline="")
                 with archivo:
                     escritor=csv.writer(archivo)
@@ -259,15 +266,23 @@ def TipoAventura():
 
     #agregar que si el usuario ya existe, no dejar que se registre
         
-    btnHistoria= Button(menu, text="Modo Historia",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black")#, command= Historia)
+    btnHistoria= Button(menu, text="Modo Historia",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Historia)
     btnHistoria.place(x=100, y= 200)
 
     btnsalir= Button(menu, text="Menu Principal",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Regresar)
     btnsalir.place(x=100, y= 400)
 
 def Entrenar():
-    menu.withdraw()#Esconde la Ventana Anterior
     import Seleccion
+    menu.withdraw()#Esconde la Ventana Anterior
+
+def Historia(bd,usuario,level):
+    datos=bd
+    user = usuario
+    nivel = level
+    import SeleccionHistoria
+
+    menu.withdraw()
 
 
 def Regresar():

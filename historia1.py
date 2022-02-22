@@ -53,7 +53,7 @@ canvashist1.pack(fill = "both", expand= True)
 #el cpu debe ser igual al entrenamiento, solo se debe programar la parte del jugador
 
 #funcion con valores de la ventana de seleccion del modo historia
-def batalla1(Personaje,nombre,t1):
+def batalla(Personaje,nombre,t1):
     global player
     global cpu
     global tipo1
@@ -63,7 +63,6 @@ def batalla1(Personaje,nombre,t1):
     Nombre = nombre
     tipo1=t1
     player=Personaje
-    nombrejugador.config(text=Nombre)
     print("************************")
     print("Datos batalla")
     print("personaje: "+str(player))
@@ -71,6 +70,7 @@ def batalla1(Personaje,nombre,t1):
     print("TipoPlayer "+t1)
 
     if(player==1):
+        nombrejugador.config(text="Aquarder")
         Pokemonjugador.config(image=tk_aquander)
         Atq1.config(text="Aqua-jet")
         Atq2.config(text="Cola Ferrea")
@@ -78,6 +78,7 @@ def batalla1(Personaje,nombre,t1):
         Atq4.config(text="Lluvia")
 
     elif(player==2):
+        nombrejugador.config(text="Electder")
         Pokemonjugador.config(image=tk_electder)
         Atq1.config(text="Trueno")
         Atq2.config(text="Arañazo")
@@ -85,6 +86,7 @@ def batalla1(Personaje,nombre,t1):
         Atq4.config(text="C. Magnetico")
     
     elif(player==3):
+        nombrejugador.config(text="Firesor")
         Pokemonjugador.config(image=tk_firesor)
         Atq1.config(text="Llamarada")
         Atq2.config(text="Embestida")
@@ -92,6 +94,7 @@ def batalla1(Personaje,nombre,t1):
         Atq4.config(text="Dia Soleado")
     
     elif(player==4):
+        nombrejugador.config(text="Mousebug")
         Pokemonjugador.config(image=tk_mouse)
         Atq1.config(text="Picotazo")
         Atq2.config(text="Embestida")
@@ -99,6 +102,7 @@ def batalla1(Personaje,nombre,t1):
         Atq4.config(text="Esporas")
 
     elif(player==5):
+        nombrejugador.config(text="Splant")
         Pokemonjugador.config(image=tk_splant)
         Atq1.config(text="Hola Navaja")
         Atq2.config(text="Mordisco")
@@ -106,6 +110,7 @@ def batalla1(Personaje,nombre,t1):
         Atq4.config(text="Rayo Solar")
 
     elif(player==6):
+        nombrejugador.config(text="Rockdog")
         Pokemonjugador.config(image=tk_rockdog)
         Atq1.config(text="Roca Afilada")
         Atq2.config(text="Velocidad")
