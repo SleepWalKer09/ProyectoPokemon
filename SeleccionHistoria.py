@@ -1,8 +1,8 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from tkinter import messagebox
 import os
 import pandas as pd
+from ProyectoPokemon import *
 
 
 Personaje=0
@@ -449,14 +449,7 @@ def iniciar():
         else:
             messagebox.showerror(message="Selecciona ambos personajes", title="Error")
 
-
-    global bd
-    global usuario
-    global level
-   
-    print(bd)
-    print("user: "+ usuario)
-    print("nivel: "+ level)
+    bd = os.listdir('C:\\Users\\chris\\Documents\\IALabSchool')
     for fichero in bd:
             print(fichero)
             if fichero.startswith(usuario):# and fichero.endswith(".csv"):

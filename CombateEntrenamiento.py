@@ -1,12 +1,10 @@
-from cgitb import text
-from multiprocessing import cpu_count
 from tkinter import *
 from PIL import ImageTk, Image
-from tkinter import messagebox
 import os
 import time
 import random
 from PIL import Image, ImageTk
+from CombateEntrenamiento import *
 
 a= "C:\\Users\\chris\\Documents\\IALabSchool\\Imagenes\\"
 Personaje = 0

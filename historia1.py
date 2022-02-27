@@ -714,8 +714,6 @@ def CuartoAtaque():#especial
 
 
 
-
-
 Pokemonjugador= Label()
 Pokemonjugador.place(x=180,y=80)
 nombrejugador = Label(text=Nombre)

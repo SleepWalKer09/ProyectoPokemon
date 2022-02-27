@@ -52,7 +52,7 @@ canvashist3.pack(fill = "both", expand= True)
 #el cpu debe ser igual al entrenamiento, solo se debe programar la parte del jugador
 
 #funcion con valores de la ventana de seleccion del modo historia
-def batalla1(Personaje,nombre,t1):
+def batalla(Personaje,nombre,t1):
     global player
     global cpu
     global tipo1

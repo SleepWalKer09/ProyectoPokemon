@@ -3,7 +3,6 @@ Proyecto Final
 Instrucciones aqui:
 https://classroom.google.com/c/NDE1MTM0NDc4ODk0/a/NDU3Mzg4NzQyMDI0/details
 """
-from logging import _Level
 from random import random
 from tkinter import *
 from tkinter import messagebox
@@ -14,6 +13,7 @@ from numpy import dtype
 import pandas as pd
 from os import getcwd
 import os
+
 
 aquander = 1
 electer = 2
@@ -222,7 +222,7 @@ def RegistrarUsuario():
             #generar csv con distinto nombre para cada usuario
                 header=['Name','Password','Level']
                 datos=[usuario,passw,level]
-                archivo = open("BDUsuarios\\"+usuario+".csv","w",newline="")
+                archivo = open("C:\\Users\\chris\\Documents\\IALabSchool\\"+usuario+".csv","w",newline="")
                 with archivo:
                     escritor=csv.writer(archivo)
                     escritor.writerow(header)
@@ -272,10 +272,12 @@ def TipoAventura():
     btnsalir= Button(menu, text="Menu Principal",height= 5, width=26, font=("times",10,"bold"), bg= "#F7C031", fg="black", command= Regresar)
     btnsalir.place(x=100, y= 400)
 
+#funcion a ventana de seleccion entrenamiento
 def Entrenar():
     import Seleccion
     menu.withdraw()#Esconde la Ventana Anterior
 
+#funcion a ventana de seleccion historia
 def Historia(bd,usuario,level):
     datos=bd
     user = usuario

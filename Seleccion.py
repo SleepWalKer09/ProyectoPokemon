@@ -1,9 +1,10 @@
-from cgitb import text
 from sre_parse import State
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import messagebox
 import os
+import combate
+
 
 Personaje=0
 nombre=""
@@ -207,6 +208,8 @@ def a1():
     global rival
     global t1
     global t2
+    global pokuser
+    global pokcpu
     if (bandera ==0):
         nombre = "Aquarder"
         t1= "Agua"
@@ -214,6 +217,8 @@ def a1():
         Personaje=1
         pokeaquander.config(bg="red")
         messagebox.showinfo(message="Selecciona tu contricante", title="Contricante")
+        pokuser = combate.Entrenador(Personaje, nombre)
+
     else:
         if (Personaje==1):
             pokeaquander.config(bg="pink")
@@ -230,6 +235,8 @@ def a1():
         pokemouse.config(state=DISABLED)
         pokesplant.config(state=DISABLED)
         pokerockdog.config(state=DISABLED)
+        pokcpu = combate.Entrenador(rival, nombre2)
+
         print("personaje: "+str(Personaje))
         print("nombre "+nombre)
         print("TipoPlayer "+t1)
@@ -313,7 +320,7 @@ def a3():
         print("nombre2 "+nombre2)
         print("TipoRival "+t2)
 
-def a4():
+def a4():    
     global nombre
     global nombre2
     global bandera
@@ -350,6 +357,7 @@ def a4():
         print("rival "+str(rival))
         print("nombre2 "+nombre2)
         print("TipoRival "+t2)
+
 def a5():
     global nombre
     global nombre2
@@ -429,7 +437,6 @@ def a6():
         print("TipoRival "+t2)
 
 
-
 def iniciar():
     global nombre
     global nombre2
@@ -444,7 +451,8 @@ def iniciar():
             print("Ok")
             train.destroy()
             import CombateEntrenamiento
-            CombateEntrenamiento.batalla(Personaje,rival,nombre,nombre2,t1,t2)
+            CombateEntrenamiento.batalla(Personaje,rival,nombre,nombre2,t1,t2,pokuser,pokcpu)
+            train.forget()
         else:
             messagebox.showerror(message="Selecciona ambos personajes", title="Error")
     else:
